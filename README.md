@@ -11,3 +11,4 @@ Create an e-commerce site using React and database of your choice.
     • Pages should be rendered on the server ( may use express-js )
     • Items should be stored in the database but a UI for adding new items is optional and may be skipped to save time.
     ![](screen-recorder-tue-jun-23-2020-10-18-05.gif)
+    ![](screen-recorder-tue-jun-23-2020-10-18-55.gif)
