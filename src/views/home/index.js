@@ -45,7 +45,7 @@ const Home = (props) => {
   };
   const isFiltered = ['keyword', 'brand', 'minPrice', 'maxPrice', 'sortBy'].some(key => !!store.filter[key]);
   const displaySelected = product => setProductSelected(product);
-  const foundOnBasket = id => !!store.basket.find(item => item.id === id); 
+  const foundOnBasket = id => !!store.basket.find(item => item.id === id);
   const onOpenModal = () => setModalOpen(true);
   const onCloseModal = () => setModalOpen(false);
   
@@ -57,7 +57,7 @@ const Home = (props) => {
             <div className="product-list-header-title">
               {isFiltered && (
                 <h5>
-                  {store.filteredProducts.length > 0 
+                  {store.filteredProducts.length > 0
                     && `Found ${store.filteredProducts.length} ${store.filteredProducts.length > 1 ? 'products' : 'product'}`
                   }
                 </h5>
@@ -69,34 +69,34 @@ const Home = (props) => {
         <Boundary>
           <ProductList
               dispatch={dispatch}
-              productsLength={store.productsLength}
               filteredProductsLength={store.filteredProducts.length}
               foundOnBasket={foundOnBasket}
               isLoading={store.isLoading}
-              location={props.location}
               lastRefKey={store.lastRefKey}
-              totalItems={store.totalItems}
+              location={props.location}
+              productsLength={store.productsLength}
               requestStatus={store.requestStatus}
+              totalItems={store.totalItems}
           >
-            <Modal 
-                isOpen={isOpenModal} 
+            <Modal
+                isOpen={isOpenModal}
                 onRequestClose={onCloseModal}
                 overrideStyle={{ padding: 0 }}
             >
-              <ProductModalDetails 
-                  product={productSelected}
+              <ProductModalDetails
                   dispatch={dispatch}
                   foundOnBasket={foundOnBasket}
+                  product={productSelected}
               />
-              <button 
+              <button
                   className="modal-close-button"
                   onClick={onCloseModal}
               >
                 <i className="fa fa-times-circle" />
               </button>
             </Modal>
-            <div 
-                className="product-list" 
+            <div
+                className="product-list"
                 ref={productListWrapper}
                 style={{ gridTemplateColumns: `repeat(${columnCount}, 160px)` }}
             >
@@ -108,11 +108,11 @@ const Home = (props) => {
                 />
               )) : store.filteredProducts.map(product => (
                 <ProductItem
-                    foundOnBasket={foundOnBasket}
                     dispatch={dispatch}
+                    displaySelected={displaySelected}
+                    foundOnBasket={foundOnBasket}
                     key={product.id}
                     onOpenModal={onOpenModal}
-                    displaySelected={displaySelected}
                     product={product}
                 />
               ))}
